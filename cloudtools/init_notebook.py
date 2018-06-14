@@ -52,7 +52,7 @@ if role == 'Master':
     except:
         pass
     else:
-        pkgs.extend(user_pkgs.split(','))
+        pip_pkgs.extend(user_pkgs.split(','))
 
     call('/opt/conda/bin/conda update setuptools', shell=True)
     for pkg in conda_pkgs:
