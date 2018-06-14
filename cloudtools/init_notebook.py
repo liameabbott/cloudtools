@@ -27,6 +27,7 @@ role = get_metadata('dataproc-role')
 if role == 'Master':
     # additional packages to install
     pkgs = [
+        'mkl',
         'numpy',
         'pandas',
         'matplotlib',
@@ -52,7 +53,7 @@ if role == 'Master':
 
     call('/opt/conda/bin/conda update setuptools', shell=True)
     for pkg in pkgs:
-        call('/opt/conda/bin/pip install {}'.format(pkg), shell=True)
+        call('/opt/conda/bin/conda install {}'.format(pkg), shell=True)
 
     py4j = decode_f(check_output('ls /usr/lib/spark/python/lib/py4j*', shell=True).strip())
 
